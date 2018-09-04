@@ -6,6 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import { withStyles } from "@material-ui/core/styles";
 
 import ArtistTab from "./ArtistsSection/ArtistsTab";
+import SongsTab from "./SongsSection/SongsTab.js";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -47,7 +48,7 @@ class App extends Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <ArtistTab />
-          <div>goodbye 2</div>
+          <SongsTab />
         </SwipeableViews>
       </div>
     );

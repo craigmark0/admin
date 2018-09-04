@@ -12,12 +12,12 @@ const styles = theme => ({
   }
 });
 
-class ArtistsTab extends React.Component {
+class SongsTab extends React.Component {
   render() {
     const { classes } = this.props;
     return (
       <div style={{ position: "relative", height: "100vh" }}>
-        <div>All Artists</div>
+        <div>All Songs</div>
         <Button
           variant="fab"
           className={classes.button}
@@ -30,4 +30,4 @@ class ArtistsTab extends React.Component {
   }
 }
 
-export default withStyles(styles)(ArtistsTab);
+export default withStyles(styles)(SongsTab);
