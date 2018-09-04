@@ -3,6 +3,7 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SongDetails from "./SongDetails";
 
 export const SongsListComponent = ({ songs }) => {
   return (
@@ -22,7 +23,7 @@ export const SongsListComponent = ({ songs }) => {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <div style={rowDetailsContainer}>
-                  asdfj asdkjf asdfjasdf asdfjasdf
+                  <SongDetails />
                 </div>
               </ExpansionPanelDetails>
             </ExpansionPanel>

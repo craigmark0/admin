@@ -1,5 +1,5 @@
 export const filterAllSongs = (songs, search) => {
-  if (search == "") {
+  if (search === "") {
     return songs;
   } else {
     let matchingSongs = songs.filter(song => {
