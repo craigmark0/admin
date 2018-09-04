@@ -38,7 +38,7 @@ const tableContainer = {
 };
 
 const rowTitle = {
-  padding: "30px",
+  padding: "20px",
   display: "flex"
 };
 
