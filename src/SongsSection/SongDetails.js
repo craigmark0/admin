@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   container: {
@@ -19,7 +20,15 @@ const styles = theme => ({
 });
 
 class SongDetails extends React.Component {
+  state = {
+    isEditable: false
+  };
+
   handleChange = () => {};
+  toggleEdit = () => {
+    this.setState(prev => ({ isEditable: !prev.isEditable }));
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -32,8 +41,20 @@ class SongDetails extends React.Component {
           width: "100%"
         }}
       >
-        <FormGroup row>
-          <FormControl className={classes.formControl}>
+        <div
+          style={{ display: "flex", width: "100%", justifyContent: "flex-end" }}
+        >
+          <Switch onChange={this.toggleEdit} />
+          <FormHelperText style={{ height: "100%", alignSelf: "center" }}>
+            edit
+          </FormHelperText>
+        </div>
+
+        <FormGroup row style={{ justifyContent: "center" }}>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
             <InputLabel>Artist Name</InputLabel>
             <Input
               id="name-disabled"
@@ -41,7 +62,10 @@ class SongDetails extends React.Component {
               onChange={this.handleChange}
             />
           </FormControl>
-          <FormControl className={classes.formControl} disabled>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
             <InputLabel>Song Title</InputLabel>
             <Input
               id="name-disabled"
@@ -50,9 +74,23 @@ class SongDetails extends React.Component {
             />
           </FormControl>
         </FormGroup>
-        <FormGroup row>
-          <FormControl className={classes.formControl} disabled>
-            <InputLabel>Name</InputLabel>
+        <FormGroup row style={{ justifyContent: "center" }}>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Audio File Name</InputLabel>
+            <Input
+              id="name-disabled"
+              value={"test"}
+              onChange={this.handleChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Audio File</InputLabel>
             <Input
               id="name-disabled"
               value={"test"}
@@ -60,6 +98,25 @@ class SongDetails extends React.Component {
             />
           </FormControl>
         </FormGroup>
+        {this.state.isEditable ? (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end"
+            }}
+          >
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                SAVE
+              </Button>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }

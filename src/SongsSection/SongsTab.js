@@ -35,11 +35,10 @@ class SongsTab extends React.Component {
     const { classes } = this.props;
     return (
       <div style={{ position: "relative", height: "100vh" }}>
-        <div>All Songs</div>
         <Button
           variant="fab"
           className={classes.button}
-          style={{ position: "absolute", right: "0" }}
+          style={{ position: "absolute", right: "37px", top: "10px" }}
         >
           <AddIcon />
         </Button>
@@ -51,9 +50,11 @@ class SongsTab extends React.Component {
           margin="normal"
           onChange={this.handleSearch}
         />
-        <SongsListComponent
-          songs={filterAllSongs(allSongs, this.state.search)}
-        />
+        <div style={{ padding: "50px" }}>
+          <SongsListComponent
+            songs={filterAllSongs(allSongs, this.state.search)}
+          />
+        </div>
       </div>
     );
   }

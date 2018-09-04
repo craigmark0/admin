@@ -35,7 +35,7 @@ export const SongsListComponent = ({ songs }) => {
 };
 
 const tableContainer = {
-  marginTop: "200px"
+  marginTop: "80px"
 };
 
 const rowTitle = {
@@ -48,7 +48,8 @@ const rowContainer = {
 };
 
 const rowDetailsContainer = {
-  display: "flex"
+  display: "flex",
+  width: "100%"
 };
 
 const songTitle = {
