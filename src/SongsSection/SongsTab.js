@@ -2,9 +2,10 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from "@material-ui/core/styles";
-import { SongsListComponent } from "./SongsListComponent";
 import TextField from "@material-ui/core/TextField";
 import { filterAllSongs } from "./filterAllSongs";
+import { ExpandableList } from "../list/ExpandableList";
+import SongDetails from "./SongDetails";
 
 import Papa from "papaparse";
 import { songs } from "../songsCsvString";
@@ -21,7 +22,15 @@ const styles = theme => ({
 const allSongs = Papa.parse(songs, { header: true }).data;
 allSongs.map((song, i) => (song.id = i + 1));
 
-console.log(allSongs);
+//console.log(allSongs);
+
+const RowTitle = props => (
+  <div style={rowTitle}>
+    <div style={songTitle}>{props.songTitle}</div>
+    <div style={artistTitle}>{props.artist}</div>
+  </div>
+);
+
 class SongsTab extends React.Component {
   state = {
     search: ""
@@ -29,8 +38,9 @@ class SongsTab extends React.Component {
 
   handleSearch = e => {
     this.setState({ search: e.target.value });
-    console.log(e.target.value);
+    //console.log(e.target.value);
   };
+
   render() {
     const { classes } = this.props;
     return (
@@ -44,20 +54,38 @@ class SongsTab extends React.Component {
         </Button>
         <TextField
           id="search"
-          label="Filter Songs"
+          label="Search Songs"
           type="search"
           className={classes.textField}
           margin="normal"
           onChange={this.handleSearch}
         />
         <div style={{ padding: "50px" }}>
-          <SongsListComponent
-            songs={filterAllSongs(allSongs, this.state.search)}
+          <ExpandableList
+            list={filterAllSongs(allSongs, this.state.search)}
+            RowTitle={RowTitle}
+            DetailsComponent={SongDetails}
           />
         </div>
       </div>
     );
   }
 }
+
+const songTitle = {
+  marginRight: "20px",
+  width: "15%",
+  textAlign: "left"
+};
+const artistTitle = {
+  marginLeft: "20px",
+  fontStyle: "italic",
+  color: "grey"
+};
+const rowTitle = {
+  //padding: "20px",
+  display: "flex",
+  width: "100%"
+};
 
 export default withStyles(styles)(SongsTab);

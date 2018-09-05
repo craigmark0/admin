@@ -3,27 +3,23 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SongDetails from "./SongDetails";
 
-export const SongsListComponent = ({ songs }) => {
+export const ExpandableList = ({ list, RowTitle, DetailsComponent }) => {
   return (
     <div style={tableContainer}>
-      {songs.map(song => {
+      {list.map(rowData => {
         return (
-          <div key={song.id}>
+          <div key={rowData.id}>
             <ExpansionPanel>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 style={rowContainer}
               >
-                <div style={rowTitle}>
-                  <div style={artistTitle}>{song.artist}</div>
-                  <div style={songTitle}>{song.songTitle}</div>
-                </div>
+                <RowTitle {...rowData} />
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <div style={rowDetailsContainer}>
-                  <SongDetails {...song} />
+                  <DetailsComponent {...rowData} />
                 </div>
               </ExpansionPanelDetails>
             </ExpansionPanel>
