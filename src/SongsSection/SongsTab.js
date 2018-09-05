@@ -44,7 +44,7 @@ class SongsTab extends React.Component {
         </Button>
         <TextField
           id="search"
-          label="Search field"
+          label="Filter Songs"
           type="search"
           className={classes.textField}
           margin="normal"
