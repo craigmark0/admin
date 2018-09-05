@@ -30,20 +30,25 @@ const styles = theme => ({
   }
 });
 
-class SongDetails extends React.Component {
+class ArtistDetails extends React.Component {
   state = {
     isEditable: false,
     artist: this.props.artist,
+    artistHeroImage: this.props.artistHeroImage,
     artistThumbnail: this.props.artistThumbnail,
-    audioFileName: this.props.audioFileName,
+    songPreviewName: this.props.songPreviewName,
+    bio: this.props.bio,
+    video: this.props.video,
+    facebookLink: this.props.facebookLink,
+    instagramLink: this.props.instagramLink,
+    twitterLink: this.props.twitterLink,
     energy: this.props.energy,
-    genreA: this.props.genreA,
-    genreB: this.props.genreB,
-    imageFileName: this.props.imageFileName,
-    songLength: this.props.songLength,
-    songTitle: this.props.songTitle,
+    genre: this.props.genre,
     vibe: this.props.vibe,
-    vocal: this.props.vocal
+    vocal: this.props.vocal,
+    altImage1: this.props.altImage1,
+    altImage2: this.props.altImage2,
+    altImage3: this.props.altImage3
   };
 
   handleInputChange = e => {
@@ -63,15 +68,20 @@ class SongDetails extends React.Component {
     let {
       artist,
       artistThumbnail,
-      audioFileName,
+      songPreviewName,
       energy,
-      genreA,
-      genreB,
-      imageFileName,
-      songLength,
-      songTitle,
+      genre,
+      artistHeroImage,
       vibe,
-      vocal
+      vocal,
+      bio,
+      video,
+      facebookLink,
+      instagramLink,
+      twitterLink,
+      altImage1,
+      altImage2,
+      altImage3
     } = this.state;
 
     return (
@@ -118,85 +128,26 @@ class SongDetails extends React.Component {
             className={classes.formControl}
             disabled={!this.state.isEditable}
           >
-            <InputLabel>Song Title</InputLabel>
+            <InputLabel>Song Preview Name</InputLabel>
             <Input
-              id="songTitle"
-              value={songTitle}
+              id="songPreviewName"
+              value={songPreviewName}
               onChange={this.handleInputChange}
             />
           </FormControl>
-          <FormControl
-            className={classes.formControl}
-            disabled={!this.state.isEditable}
-          >
-            <InputLabel>Song Thumbnail Image</InputLabel>
-            <Input
-              id="artistThumbnail"
-              value={artistThumbnail}
-              onChange={this.handleInputChange}
-            />
-          </FormControl>
-        </FormGroup>
-        <FormGroup
-          row
-          style={{
-            justifyContent: "center",
-            width: "90%",
-            justifyContent: "flex-start",
-            marginLeft: "50px"
-          }}
-        >
-          <FormControl
-            className={classes.formControl}
-            disabled={!this.state.isEditable}
-          >
-            <InputLabel>Audio File Name</InputLabel>
-            <Input
-              id="audioFileName"
-              value={audioFileName}
-              onChange={this.handleInputChange}
-            />
-          </FormControl>
-          <FormControl
-            className={classes.formControl}
-            disabled={!this.state.isEditable}
-          >
-            <InputLabel>Audio File</InputLabel>
-            <Input id="name-disabled" value={"test"} />
-          </FormControl>
-          <FormControl
-            className={classes.formControl}
-            disabled={!this.state.isEditable}
-          >
-            <InputLabel>Audio Length</InputLabel>
-            <Input
-              id="songLength"
-              value={songLength}
-              onChange={this.handleInputChange}
-            />
-          </FormControl>
-        </FormGroup>
-        <FormGroup
-          row
-          style={{
-            justifyContent: "center",
-            width: "90%",
-            justifyContent: "flex-start",
-            marginLeft: "50px"
-          }}
-        >
+
           <FormControl
             className={classes.formControl}
             disabled={!this.state.isEditable}
           >
             <TextField
-              id="genreA"
+              id="genre"
               select
-              label="Genre A"
+              label="Genre"
               className={classes.textField}
               disabled={!this.state.isEditable}
-              value={genreA}
-              onChange={this.handleSelectChange("genreA")}
+              value={genre}
+              onChange={this.handleSelectChange("genre")}
               SelectProps={{
                 MenuProps: {
                   className: classes.menu
@@ -210,32 +161,41 @@ class SongDetails extends React.Component {
               ))}
             </TextField>
           </FormControl>
+        </FormGroup>
+
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
           <FormControl
             className={classes.formControl}
             disabled={!this.state.isEditable}
           >
-            <TextField
-              id="genreB"
-              select
-              label="Genre B"
-              className={classes.textField}
-              disabled={!this.state.isEditable}
-              value={genreB}
-              onChange={this.handleSelectChange("genreB")}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu
-                }
-              }}
-            >
-              {allGenreB.map(genre => (
-                <MenuItem key={genre} value={genre}>
-                  {genre}
-                </MenuItem>
-              ))}
-            </TextField>
+            <InputLabel>Artist Hero Image</InputLabel>
+            <Input
+              id="artistHeroImage"
+              value={artistHeroImage}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Artist Thumbnail Image</InputLabel>
+            <Input
+              id="artistThumbnail"
+              value={artistThumbnail}
+              onChange={this.handleInputChange}
+            />
           </FormControl>
         </FormGroup>
+
         <FormGroup
           row
           style={{
@@ -321,6 +281,118 @@ class SongDetails extends React.Component {
             </TextField>
           </FormControl>
         </FormGroup>
+
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Bio</InputLabel>
+            <Input id="bio" value={bio} onChange={this.handleInputChange} />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Video Url</InputLabel>
+            <Input id="video" value={video} onChange={this.handleInputChange} />
+          </FormControl>
+        </FormGroup>
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Facebook Link</InputLabel>
+            <Input
+              id="facebookLink"
+              value={facebookLink}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Instagram Link</InputLabel>
+            <Input
+              id="instagramLink"
+              value={instagramLink}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Twitter Link</InputLabel>
+            <Input
+              id="twitterLink"
+              value={twitterLink}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+        </FormGroup>
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Alternative Image 1</InputLabel>
+            <Input
+              id="altImage1"
+              value={altImage1}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Alternative Image 2</InputLabel>
+            <Input
+              id="altImage2"
+              value={altImage2}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Alternative Image 3</InputLabel>
+            <Input
+              id="altImage3"
+              value={altImage3}
+              onChange={this.handleInputChange}
+            />
+          </FormControl>
+        </FormGroup>
+
         {this.state.isEditable ? (
           <div
             style={{
@@ -345,4 +417,4 @@ class SongDetails extends React.Component {
   }
 }
 
-export default withStyles(styles)(SongDetails);
+export default withStyles(styles)(ArtistDetails);

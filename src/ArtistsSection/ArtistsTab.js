@@ -7,6 +7,7 @@ import { artists } from "../artistsCsvString";
 import TextField from "@material-ui/core/TextField";
 import Papa from "papaparse";
 import { filterAllArtists } from "./filterAllArtists";
+import ArtistDetails from "./ArtistDetails";
 
 const styles = theme => ({
   button: {
@@ -19,6 +20,7 @@ const styles = theme => ({
 
 const allArtists = Papa.parse(artists, { header: true }).data;
 allArtists.map((artist, i) => (artist.id = i + 1));
+console.log(allArtists);
 
 const RowTitle = props => <div>{props.artist}</div>;
 
@@ -57,7 +59,7 @@ class ArtistsTab extends React.Component {
           <ExpandableList
             list={filterAllArtists(allArtists, this.state.search)}
             RowTitle={RowTitle}
-            DetailsComponent={DummyDetails}
+            DetailsComponent={ArtistDetails}
           />
         </div>
       </div>
