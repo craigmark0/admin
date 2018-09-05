@@ -23,7 +23,7 @@ export const SongsListComponent = ({ songs }) => {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <div style={rowDetailsContainer}>
-                  <SongDetails />
+                  <SongDetails {...song} />
                 </div>
               </ExpansionPanelDetails>
             </ExpansionPanel>

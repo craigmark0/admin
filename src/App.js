@@ -4,13 +4,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { withStyles } from "@material-ui/core/styles";
-
 import ArtistTab from "./ArtistsSection/ArtistsTab";
 import SongsTab from "./SongsSection/SongsTab.js";
-import logo from "./logo.svg";
 import "./App.css";
-
-import MainMenu from "./mainMenu/MainMenuComponent";
 
 const styles = theme => ({
   button: {

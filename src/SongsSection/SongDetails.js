@@ -21,17 +21,43 @@ const styles = theme => ({
 
 class SongDetails extends React.Component {
   state = {
-    isEditable: false
+    isEditable: false,
+    artist: this.props.artist,
+    artistThumbnail: this.props.artistThumbnail,
+    audioFileName: this.props.audioFileName,
+    energy: this.props.energy,
+    genreA: this.props.genreA,
+    genreB: this.props.genreB,
+    imageFileName: this.props.imageFileName,
+    songLength: this.props.songLength,
+    songTitle: this.props.songTitle,
+    vibe: this.props.vibe,
+    vocal: this.props.vocal
   };
 
-  handleChange = () => {};
+  handleChange = e => {
+    console.log(e.target.id);
+    this.setState({ [e.target.id]: e.target.value });
+  };
   toggleEdit = () => {
     this.setState(prev => ({ isEditable: !prev.isEditable }));
   };
 
   render() {
     const { classes } = this.props;
-
+    const {
+      artist,
+      artistThumbnail,
+      audioFileName,
+      energy,
+      genreA,
+      genreB,
+      imageFileName,
+      songLength,
+      songTitle,
+      vibe,
+      vocal
+    } = this.state;
     return (
       <div
         style={{
@@ -50,17 +76,21 @@ class SongDetails extends React.Component {
           </FormHelperText>
         </div>
 
-        <FormGroup row style={{ justifyContent: "center" }}>
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
           <FormControl
             className={classes.formControl}
             disabled={!this.state.isEditable}
           >
             <InputLabel>Artist Name</InputLabel>
-            <Input
-              id="name-disabled"
-              value={"test"}
-              onChange={this.handleChange}
-            />
+            <Input id="artist" value={artist} onChange={this.handleChange} />
           </FormControl>
           <FormControl
             className={classes.formControl}
@@ -68,21 +98,40 @@ class SongDetails extends React.Component {
           >
             <InputLabel>Song Title</InputLabel>
             <Input
-              id="name-disabled"
-              value={"test"}
+              id="songTitle"
+              value={songTitle}
+              onChange={this.handleChange}
+            />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Song Thumbnail Image</InputLabel>
+            <Input
+              id="artistThumbnail"
+              value={artistThumbnail}
               onChange={this.handleChange}
             />
           </FormControl>
         </FormGroup>
-        <FormGroup row style={{ justifyContent: "center" }}>
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
           <FormControl
             className={classes.formControl}
             disabled={!this.state.isEditable}
           >
             <InputLabel>Audio File Name</InputLabel>
             <Input
-              id="name-disabled"
-              value={"test"}
+              id="audioFileName"
+              value={audioFileName}
               onChange={this.handleChange}
             />
           </FormControl>
@@ -91,11 +140,73 @@ class SongDetails extends React.Component {
             disabled={!this.state.isEditable}
           >
             <InputLabel>Audio File</InputLabel>
+            <Input id="name-disabled" value={"test"} />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Audio Length</InputLabel>
             <Input
-              id="name-disabled"
-              value={"test"}
+              id="songLength"
+              value={songLength}
               onChange={this.handleChange}
             />
+          </FormControl>
+        </FormGroup>
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Genre A</InputLabel>
+            <Input id="genreA" value={genreA} onChange={this.handleChange} />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Genre B</InputLabel>
+            <Input id="genreB" value={genreB} onChange={this.handleChange} />
+          </FormControl>
+        </FormGroup>
+        <FormGroup
+          row
+          style={{
+            justifyContent: "center",
+            width: "90%",
+            justifyContent: "flex-start",
+            marginLeft: "50px"
+          }}
+        >
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Vocal</InputLabel>
+            <Input id="vocal" value={vocal} onChange={this.handleChange} />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Vibe</InputLabel>
+            <Input id="vibe" value={vibe} onChange={this.handleChange} />
+          </FormControl>
+          <FormControl
+            className={classes.formControl}
+            disabled={!this.state.isEditable}
+          >
+            <InputLabel>Energy</InputLabel>
+            <Input id="energy" value={energy} onChange={this.handleChange} />
           </FormControl>
         </FormGroup>
         {this.state.isEditable ? (
